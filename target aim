@@ -3,7 +3,7 @@
 local NotifyLibrary = loadstring(game:HttpGet("https://pastebin.com/raw/zg2UfGDN"))()
 local Notify = NotifyLibrary.Notify
 
-getgenv().Target = false
+getgenv().Target = true
 
 getgenv().Key = Enum.KeyCode.V
 getgenv().Prediction = 0.12654321
