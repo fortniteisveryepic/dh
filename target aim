@@ -142,10 +142,4 @@ end
 		end
 		return old(...)
 	end)
-	if getgenv.AirshotFunccc then
-	if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
-        getgenv().Partz = "RightFoot"
-    else
-        getgenv().Partz = "LowerTorso"
-	end
-end
+	
