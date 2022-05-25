@@ -1,16 +1,12 @@
---Idk what lock this is so idk who to credit /shrug
-
-local NotifyLibrary = loadstring(game:HttpGet("https://pastebin.com/raw/zg2UfGDN"))()
-local Notify = NotifyLibrary.Notify
 
 getgenv().Target = true
-
-getgenv().Key = Enum.KeyCode.V
+    getgenv().Key = Enum.KeyCode.F
 getgenv().Prediction = 0.12654321
-getgenv().ChatMode = false
+getgenv().ChatMode = true
 getgenv().NotifMode = false
-getgenv().PartMode = true
-getgenv().Partz = "HumanoidRootPart"
+    getgenv().PartMode = true
+    getgenv().AirshotFunccc = false
+    getgenv().Partz = "HumanoidRootPart"
     --
     _G.Types = {
         Ball = Enum.PartType.Ball,
@@ -19,20 +15,20 @@ getgenv().Partz = "HumanoidRootPart"
     }
     
     --variables                 
-    local Tracer = Instance.new("Part", game.Workspace)
+    	local Tracer = Instance.new("Part", game.Workspace)
     Tracer.Name = "gay"	
     Tracer.Anchored = true		
     Tracer.CanCollide = false
+    
     Tracer.Parent = game.Workspace	
     Tracer.Shape = _G.Types.Block
-game:GetService("RunService").Stepped:connect(function()
+    game:GetService("RunService").Stepped:Connect(function() 
+Tracer.Transparency = _G.targetaimtransparency
     Tracer.Size = _G.targetaimsize
     Tracer.Color = _G.targetaimcolor
-    Tracer.Transparency = _G.targetaimtransparency
-end) 
-
+    end) 
     --
-local plr = game.Players.LocalPlayer
+    local plr = game.Players.LocalPlayer
 local mouse = plr:GetMouse()
 local Runserv = game:GetService("RunService")
 
@@ -55,7 +51,17 @@ end)
     local LocalMouse = game.Players.LocalPlayer:GetMouse()
     	local Locking = false
     
-
+    	
+    --
+    if getgenv().valiansh == true then
+                        game.StarterGui:SetCore("SendNotification", {
+                   Title = "Lock",
+                   Text = "Already Loaded!",
+                   Duration = 5
+        
+                   })
+        return
+    end
     
     getgenv().valiansh = true
     
@@ -73,25 +79,30 @@ end)
         local A_1 = "Target: "..tostring(Plr.Character.Humanoid.DisplayName) local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2) 
         	end	
                if getgenv().NotifMode then
-    			             Notify({
-                Title = "Crimskid",
-                Description = "Targeted:" .. Plr.Character.Humanoid.DisplayName .. "",
-                Duration = 3
-            })
+    			game.StarterGui:SetCore("SendNotification", {
+        Title = "Lock";
+        Text = "Target: "..tostring(Plr.Character.Humanoid.DisplayName);
+    
+    })
     end
     elseif not Locking then
          if getgenv().ChatMode then
         local A_1 = "Unlocked!" local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2) 
         	end	
         if getgenv().NotifMode then
-                                        Notify({
-                Title = "Crimskid",
-                Description = "Unlocked!",
-                Duration = 3
-            })
+                        game.StarterGui:SetCore("SendNotification", {
+                   Title = "Lock",
+                   Text = "Unlocked",
+                   Duration = 5
+               })
            elseif getgenv().Target == false then
-                                      
-               print("Finobe#7650 is very pro")
+                        game.StarterGui:SetCore("SendNotification", {
+                   Title = "Lock",
+                   Text = "Target isn't enabled",
+                   Duration = 5
+     
+                   })
+               
                end
                   
  
@@ -142,4 +153,10 @@ end
 		end
 		return old(...)
 	end)
-	
+	if getgenv.AirshotFunccc then
+	if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
+        getgenv().Partz = "RightFoot"
+    else
+        getgenv().Partz = "LowerTorso"
+	end
+end
