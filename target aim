@@ -89,7 +89,7 @@ getgenv().Target = true
                if (keygo.KeyCode == getgenv().Key) then
                    if getgenv().Target == true then
                     Plr =  getClosestPlayerToCursor()
-                    if Plr.Information.KO.Value == false then 
+                
                    Locking = not Locking
  
                    if Locking then
