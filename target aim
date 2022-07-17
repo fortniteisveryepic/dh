@@ -140,14 +140,7 @@ end
              if getgenv().ChatMode then
             local A_1 = "Unlocked!" local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2) 
                 end	
-               if getgenv().Target == false then
-                Notify({
-                Title = "Crimskid",
-                Description = "Unlocked!",
-                Duration = 3
-            })
- 
-                   end
+
  
  
      end        
