@@ -1,12 +1,12 @@
 local NotifyLibrary = loadstring(game:HttpGet("https://pastebin.com/raw/zg2UfGDN"))()
 local Notify = NotifyLibrary.Notify
 
-getgenv().Target = true
+getgenv().Target = false
     -- Configuration
     getgenv().Key = Enum.KeyCode.V
     getgenv().Prediction = 0.1413
     getgenv().ChatMode = false
-    getgenv().NotifMode = true
+    getgenv().NotifMode = false
         getgenv().PartMode = true
         getgenv().AirshotFunccc = true
         getgenv().Partz = "HumanoidRootPart"
