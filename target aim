@@ -1,18 +1,26 @@
 local NotifyLibrary = loadstring(game:HttpGet("https://pastebin.com/raw/zg2UfGDN"))()
 local Notify = NotifyLibrary.Notify
 
+
+_G.targetaimtransparency = 0.8
+   _G.targetaimsize = Vector3.new(14,14,14)
+   _G.targetaimcolor = Color3.fromRGB(128,128,128)
 getgenv().Target = false
     -- Configuration
     getgenv().Key = Enum.KeyCode.V
     getgenv().Prediction = 0.1413
     getgenv().ChatMode = false
-    getgenv().NotifMode = false
+    getgenv().NotifMode = true
         getgenv().PartMode = true
         getgenv().AirshotFunccc = true
         getgenv().Partz = "HumanoidRootPart"
     getgenv().AutoPrediction = false
     getgenv().Fov = math.huge
     getgenv().Circle = false
+    --
+    getgenv().TargetStrafe = false
+    getgenv().targetdistance = 5 
+    getgenv().targetspeed = 5 
     --
         _G.Types = {
             Ball = Enum.PartType.Ball,
@@ -78,8 +86,7 @@ getgenv().Target = false
         --
  
  
-        getgenv().valiansh = true
- 
+
             local UserInputService = game:GetService("UserInputService")
  
         UserInputService.InputBegan:Connect(function(keygo,ok)
@@ -100,23 +107,40 @@ getgenv().Target = false
                 end	
                    if getgenv().NotifMode then
  
+ 
+ 
              Notify({
                 Title = "Crimskid",
                 Description = "Targeted:" .. Plr.Character.Humanoid.DisplayName .. "",
                 Duration = 3
             })
-        end
+                   end
+    
+   if getgenv().TargetStrafe == true then 
+       _G.targetstrafetog = true 
+ for i = 0, 10000000, getgenv().targetspeed do 
+     if _G.targetstrafetog == true then 
+
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                        CFrame.new(Plr.Character.HumanoidRootPart.Position) *
+                                        CFrame.Angles(0, math.rad(i), 0) *
+                                        CFrame.new(getgenv().targetdistance , 0, 0) --distance
+                                     if Plr.Character.Humanoid.Health <= 5  or getgenv().Target == false or not Locking then 
+ _G.targetstrafetog = false
+ end 
+                                    task.wait()
+                                end
+end 
+end 
+end 
+end
+ 
+ 
         elseif not Locking then
              if getgenv().ChatMode then
             local A_1 = "Unlocked!" local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2) 
                 end	
-            if getgenv().NotifMode then
-                Notify({
-                Title = "Crimskid",
-                Description = "Unlocked!",
-                Duration = 3
-            })
-               elseif getgenv().Target == false then
+               if getgenv().Target == false then
                 Notify({
                 Title = "Crimskid",
                 Description = "Unlocked!",
@@ -128,8 +152,8 @@ getgenv().Target = false
  
      end        
     end
-    end
-end 
+    
+ 
     end)
  
  
